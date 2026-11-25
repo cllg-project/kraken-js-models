@@ -11,6 +11,12 @@ downloads them on first run instead of bundling them in the application.
 | `ppocr_v6_tau090.js_mlmodel` | Kraken text recognition (Ancient Greek) |
 | `dfine_cllg.js_mlmodel` | D-FINE layout zones for Greek scholarly editions (CLLG) |
 | `dfine_ladas.js_mlmodel` | D-FINE layout zones for Latin and general documents (LADaS) |
+| `signs_r2.js_mlmodel` | Multi-model OCR, `new` role: cllg-3 fine-tuned on `{ } [ ] < > \|\| + † « »`, numbers, French accents. Reads signs, not the text |
+| `letters_masked.js_mlmodel` | Multi-model OCR, `spec` role: every letter read as `_`; signs, marks, digits kept. Agreement filter for signs |
+
+The two OCR experts are used together with the base recogniser (`cllg3_rec.js_mlmodel`) by
+kraken-js's `MultiRecognizer` (CTC-spike agreement merge, see
+[cllg-multimodel-run](https://github.com/cllg-project/cllg-multimodel-run)).
 
 `SHA256SUMS` holds the checksum of every model; CLLG Desktop's `resources/models.json`
 lists the same checksums and only keeps a download that matches.
